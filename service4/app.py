@@ -7,12 +7,10 @@ import calendar
 
 app = Flask(__name__)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = getenv("DATABASE_URI")
-
 @app.route('/get_fortune/<day>/<int:number>', methods=['POST'])
 def get_fortune(day, number):
     if number == 0:
-        return f"On {day} you will loose your house and fiance, it s a tough life!"
+        return f"On {day} you will loose your house and fiance, it's a tough life!"
     elif number <= 3 :
         return f"On {day}  you will win £300 from the lottery, every little helps!"
     elif number <= 6:

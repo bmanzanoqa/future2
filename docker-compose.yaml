@@ -1,21 +1,26 @@
 version: "3.8"
 services:
-	server:
-		build: ./server
-		image: trizmanz/animal_noises_server:latest 
-		container_name: animal_noises_server       
-		ports:
-		- target: 5000
-			published: 80
-		environment:
-			DATABASE_URI: ${DATABASE_URI}
+  service1:
+    build: ./service1
+    image: trizmanz/service1:latest 
+    container_name: service1       
+    ports:
+    - target: 5000
+      published: 80
+    environment:
+      DATABASE_URI: ${DATABASE_URI}
       
-	animal_api_type:
-		build: ./animal_api_type
-		image: trizmanz/animal_noises_type:latest 
-		container_name: animal_noises_type 
+  service2:
+    build: ./service2
+    image: trizmanz/service2:latest 
+    container_name: number_api 
 
-	animal_api_noise:
-		build: ./	animal_api_noise
-		image: trizmanz/animal_noises_noise:latest 
-		container_name: animal_noises_noise 
+  service3:
+    build: ./service3
+    image: trizmanz/service3:latest 
+    container_name: day_api  
+  
+  service4:
+    build: ./service4
+    image: trizmanz/service4:latest 
+    container_name: fortune_api 

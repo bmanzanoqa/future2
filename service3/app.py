@@ -7,8 +7,6 @@ import calendar
 
 app = Flask(__name__)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = getenv("DATABASE_URI")
-
 @app.route('/get_day',methods=['GET'])
 def get_day():
     start_date = datetime.date(2021, 6, 1)
