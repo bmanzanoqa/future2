@@ -28,3 +28,5 @@ class TestHome(TestBase):
             response = self.client.get(url_for('home'))
             self.assertEqual(response.status_code, 200)
             self.assertIn(b'On Thursday(2021-06-03) you will become a millionaire, lucky you!!', response.data)
+
+    
