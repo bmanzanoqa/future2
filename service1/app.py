@@ -16,18 +16,19 @@ class Fortunes(db.Model):
     fortune = db.Column(db.String(1000), nullable=False)
 
 
-@app.route("/")
+@app.route('/')
 # @app.route("/home")
 def home():
     number = requests.get('http://number_api:5000/get_number').json()['number']
     day = requests.get('http://day_api:5000/get_day')
     fortune = requests.post(f'http://fortune_api:5000/get_fortune/{day.text}/{number}')
+    # print(fortune.text)
 
-    last_three_fortune = Fortunes.query.order_by(desc(Fortunes.id)).limit(3).all()
+    last_five_fortune = Fortunes.query.order_by(desc(Fortunes.id)).limit(5).all()
     db.session.add(Fortunes(fortune = fortune.text))
     db.session.commit()
     
-    return render_template("home.html", number=number, day=day.text, fortune=fortune.text, all_fortune = last_three_fortune)
+    return render_template('home.html', number=number, day=day.text, fortune=fortune.text, all_fortune = last_five_fortune)
 
     
 if __name__ == "__main__": app.run(host="0.0.0.0", port=5000, debug=True)
