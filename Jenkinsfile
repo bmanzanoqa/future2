@@ -6,7 +6,8 @@ pipeline {
         install = 'false'
         DATABASE_URI = credentials('DATABASE_URI')
     }
-    stage('Install Requirements') {
+    stages {
+        stage('Install Requirements') {
             steps {
                 script{
                     if (env.install == 'true'){
@@ -15,7 +16,7 @@ pipeline {
                 }
             }
         }
-    stages {
+    
         stage('Test') {
             steps {
                 // pytest
