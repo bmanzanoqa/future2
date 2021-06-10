@@ -42,7 +42,7 @@ pipeline {
             steps {
                 // install ansible on jenkins machine for the Jenkins user
                 // ansible-playbook -i inventory.yaml playbook.yaml
-                sh 'cd ansible && ~/.local/bin/ansible-playbook -i inventory.yaml playbook.yaml'
+                sh 'echo Configuration Management'
             }
         }
         stage('Deploy') {
@@ -50,7 +50,7 @@ pipeline {
                 // create swarm infrastructure
                 // copy over docker-compose.yaml
                 // ssh: docker stack deploy --compose-file docker-compose.yaml animal_noises
-                sh 'bash jenkins/deploy.sh'
+                sh 'echo Deploy'
             }
         }
     }
