@@ -1,0 +1,17 @@
+# lists of machines Ansible is going to connect to in order to configure it
+# these are the machines we are going to be connecting to using the jenkins' user
+all:
+  children:
+    managers:
+      hosts:
+        manager:
+    workers:
+      hosts:
+        worker-1:
+    load-balancer:
+      hosts:
+        nginx:
+  vars:
+    ansible_user: b
+    ansible_ssh_private_key_file: '~/.ssh/ansible_id_rsa' # has to be generated
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no' 
