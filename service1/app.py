@@ -19,9 +19,9 @@ class Fortunes(db.Model):
 @app.route('/')
 # @app.route("/home")
 def home():
-    number = requests.get('http://service2:5000/get_number').json()['number']
-    day = requests.get('http://service3:5000/get_day')
-    fortune = requests.post(f'http://service4:5000/get_fortune/{day.text}/{number}')
+    number = requests.get('http://future2_service2:5000/get_number').json()['number']
+    day = requests.get('http://future2_service3:5000/get_day')
+    fortune = requests.post(f'http://future2_service4:5000/get_fortune/{day.text}/{number}')
     # print(fortune.text)
 
     last_five_fortune = Fortunes.query.order_by(desc(Fortunes.id)).limit(5).all()
