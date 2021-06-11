@@ -13,6 +13,7 @@
   copy:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
+    force: yes
 - name: Restart nginx
   service: 
     name: nginx
