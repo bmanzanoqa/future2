@@ -12,6 +12,6 @@ all:
       hosts:
         nginx:
   vars:
-    ansible_user: b
+    ansible_user: jenkins
     ansible_ssh_private_key_file: '~/.ssh/ansible_id_rsa' # has to be generated
     ansible_ssh_common_args: '-o StrictHostKeyChecking=no' 
