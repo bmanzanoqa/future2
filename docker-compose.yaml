@@ -9,18 +9,26 @@ services:
       published: 80
     environment:
       DATABASE_URI: ${DATABASE_URI}
+    deploy:
+      replicas: 4  
       
   service2:
     build: ./service2
     image: trizmanz/service2:latest 
     container_name: number_api 
+    deploy:
+      replicas: 4
 
   service3:
     build: ./service3
     image: trizmanz/service3:latest 
     container_name: day_api  
-  
+    deploy:
+      replicas: 4  
+      
   service4:
     build: ./service4
     image: trizmanz/service4:latest 
     container_name: fortune_api 
+    deploy:
+      replicas: 4

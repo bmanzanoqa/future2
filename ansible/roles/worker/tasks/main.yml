@@ -5,4 +5,5 @@
     state: join
     # we get the token from the manager to this worker. We will node the token WHEN we'll generate it from the manager
     join_token: "{{ hostvars['manager']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+    advertise_addr: "{{ inventory_hostname }}"
     remote_addrs: [ 'manager:2377' ] # IPA of the swarm manager

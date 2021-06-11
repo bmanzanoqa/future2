@@ -4,6 +4,7 @@ pipeline {
         DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         install='false'
+        DATABASE_URI = credentials('DATABASE_URI')
     }
     stages {
         stage('Install Requirements') {
@@ -49,7 +50,7 @@ pipeline {
                 // create swarm infrastructure
                 // copy over docker-compose.yaml
                 // ssh: docker stack deploy --compose-file docker-compose.yaml animal_noises
-                sh 'echo Deploy'
+                sh 'bash jenkins/deploy.sh'
             }
         }
     }
