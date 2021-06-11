@@ -1,6 +1,7 @@
 ---
 # tasks file for worker
 - name: Add worker to swarm
+  advertise_addr: "{{ inventory_hostname }}"
   docker_swarm:
     state: join
     # we get the token from the manager to this worker. We will node the token WHEN we'll generate it from the manager
