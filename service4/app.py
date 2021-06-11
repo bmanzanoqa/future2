@@ -10,9 +10,9 @@ app = Flask(__name__)
 @app.route('/get_fortune/<day>/<int:number>', methods=['POST'])
 def get_fortune(day, number):
     if number == 0:
-        return f"On {day} you will loose your house and fiance, it's a tough life!"
+        return f"On {day} YOU WILL LOOSE YOUR HOUSE AND FIANCE, IT'S A TOUGH LIFE!"
     elif number <= 3 :
-        return f"On {day}  you will win £300 from the lottery, every little helps!"
+        return f"On {day}  YOU WILL WIN £50 FROM THE LOTTERY, EVERY LITTLE HELPS!"
     elif number <= 6:
         return f"On {day} you will be invited to countless parties, enjoy!"
     elif number <= 9:
