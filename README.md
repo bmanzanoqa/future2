@@ -1,76 +1,66 @@
 # 'LOOKING INTO THE FUTURE' APP
 
 ## Contents
-* [Overview of the Project](#overview-of-the-project)
-  * [Design](#design)
+* [Overview of the Project](#overview-of-the-project) 
+  * [Summary](#summary)
   * [Project Requirements](#project-requirements)
-* [Deployment Stages](#deployment-stages)
-  * [Project Tracking](#project-tracking)
-  * [Pipeline Planning](#pipeline-planning)
-  * [Docker & Docker-Compose](#docker-and-docker-compose)
-  * [Database Layer](#database-layer)
-  * [Jenkins & Automating testing](#jenkins-and-automating-testing)
-  * [Build and Push stages](#build-and-push-stages)
-  * [Swarm and Ansible](#swarm-and-ansible)
-  * [Ansible and NGINX](#ansible-and-nginx)
-  * [Deploy stage](#deploy-stage)
-  * [Rolling update stage](#rolling-update-stage)
+  * [Design](#design)
+    * [Kanban board tech](#kanban-board-tech)  
+    * [Risk Assessment](#risk-assessment)
+    * [Database](#database)
+    * [Test plans](#test-plans)
+* [Integration](#integration)
+* [Deployment](#deployment)
+  * [Stage1: Planning the pipeline](#planning-the-pipeline)
+  * [Stage2: Docker and Docker-Compose](#docker-and-docker-compose)
+  * [Stage3: Database Layer](#database-layer)
+  * [Stage4: Jenkins & Automating testing](#jenkins-and-automating-testing)
+  * [Stage5: Build and Push stages](#build-and-push-stages)
+  * [Stage6: Swarm and Ansible](#swarm-and-ansible)
+  * [Stage7: Ansible and NGINX](#ansible-and-nginx)
+  * [Stage8: Deploy stage](#deploy-stage)
+* [Rolling update stage](#rolling-update-stage)
 * [Images](#images)
 * [Authors](#authors)
 * [Thank you!](#thank-you)
 
 ## Overview of the Project
+
+### Summary
 For my second project in my devops development career I have been asked to create a service-oriented architecture (SOA) for an application, made of 4 services that work together.
 My application is called "Looking into the Future". This is a 4 services application where:
-  * Service 1 provides us with a webbrowser(front-end).
-  * When refreshing the webpage, service1 will send the requests to the other 3 services. 
+  * Service 1 provides us with a webbrowser (front-end). When refreshing the webpage, service1 will send the requests to the other 3 services. 
   * Service 2, 3, and 4 just store some random information.
-The idea behind this application is service 1 will send a GET request to services 2 & 3. Service 2 will generate a random date and service 3 will generate a random number, which both will send back to service 1 when service 1 sends them the GET request. These 2 pieces of information will then be sent to service 4 with the post request order to generate some kind of 'future'. Service 4 then will send all this info to Service 1 which then will show the information in the browser to the user.   
-Once Service 1 has gathered all info from Services 2,3 and 4 it will then open a db session just to store the data requested.  
-To prove there is a DB running in the background the app will be able to get the last 5 requests on the screen
+The idea behind this application is Service 1 will send a GET request to services 2 & 3. Service 2 will generate a random date and service 3 will generate a random number, which both will send back to Service 1. These 2 pieces of information will then be sent to service 4 with the post request order to generate some kind of 'future'. Service 4 then will send all this info to Service 1 which then will show the information in the browser to the user.   
+Once Service 1 has gathered all info from Services 2, 3 and 4 it will then open a db session just to store the data requested.  
+To prove there is a DB running in the background the app will be able to get the last 5 requests on the screen.
 
 ### Project Requirements
 The objective of this project is to create a CRUD application with utilisation of supporting tools, such as:
 - Jira board to cover the project management side of it showing the tasks needed to complete the project.
 - Risk Assessment recording any issues or risks I faced creating the app.
-- The application needs to be fully integrated using the Feature-Branch model into a Version Control System which will subsequently be built through a CI server and deployed to a cloud-based virtual machine.
+- The application needs to be fully integrated using the Feature-Branch model into a Version Control System which will subsequently be built through a CI server and deployed to   a cloud-based virtual machine.
 - If a change is made to a code base, then Webhooks should be used so that Jenkins recreates and redeploys the changed application
 - To deploy the app use containerisation and an orchestration tool.  
 - Create an Ansible Playbook that will provision the environment that my application needs to run. 
 - Create and use a reverse proxy to make your application accessible to the user.
 
-
 ## Project Tracking
-As project Management Software I have used Jira. The link to this board can be found in here [Jira Board](https://https://trizmanz.atlassian.net/jira/software/projects/F2/boards/4/roadmap)
+As project Management Software I have used Jira. The link to this board can be found in here [Jira Board](https://trizmanz.atlassian.net/jira/software/projects/F2/boards/4)
 
-![Jira Board Sprint](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Jira%20Board%20Backlogs%2023.05.21.PNG)
+![Jira Board Sprint](https://github.com/bmanzanoqa/F2SupportingDocs/blob/dev/Jira/Sprint.PNG)
 
-![Jira Board All Sprints](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Jira%20Board%20All%20Sprints.PNG)
+![Jira Board Backlog](https://github.com/bmanzanoqa/F2SupportingDocs/blob/dev/Jira/Backlog.PNG)
 
-In these 2 boards I have taken a screenshoot of the Backlogs showing the Epics and User Stories this project is based on and a screenshoot of the Dashboard showing where we are with our sprints. A user story is an end goal expressed from the user’s perspective​. I have used the Definition of Ready (DoR)
-to establish what a product backlog item needs before it can go into the sprint backlog andd the Definition of Done (DoD) defines what is needed before it can be regarded as complete.
+These 2 images show a screenshoot of the Backlogs with the Epics and User Stories this project is based on and a screenshoot of the Sprint board showing the sprint. A user story is an end goal expressed from the user’s perspective. I have used the Definition of Ready (DoR) to establish what a product backlog item needs before it can go into the sprint backlog andd the Definition of Done (DoD) defines what is needed before it can be regarded as complete.
 
 ## Database Structure
-This project needs a relational database with at least 2 tables, showing the relationship between them. 
-The tables created are:
-- Exhibitions
-- Items
+This project is a very simple application that has just one database with one table as shown in the image below:
 
-Both tables have a primary key (). The foreign key is in the Items table, showing the relationship to the Exhibitions table.
+![JDatabase Structure](xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
 
-The relationship is a ```one-to-many``` relationship where an Exhibition can have many Items but an Item can belong or appear in one Exhibition (can't be in 2 places at the same time) .
+This database is running in the background in a virtual machine in GCP.
 
-In the pictures below we can see an Entity Relationship Diagram explaining the relationship between the tables used in this project. This file can be found in [ERD](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/ERD%202%20tables.PNG).
-
-![ERD](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/ERD%202%20tables.PNG)
-
-I created a database in a virtual machine with mysql. The screenshot below shows the data defined for the columns and other actions carried out          
-
-![Tables](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/DB%20Tables.png)  
-
-![Sql Insert INTO](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/SQL%20Insert%20INTO.png)     
-
-![Creating a DB message](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Creating%20a%20DB.PNG)
 
 
 ## Risk Assessment
