@@ -19,7 +19,6 @@
 * [Authors](#authors)
 * [Thank you!](#thank-you)
 
-
 ## Overview of the Project
 For my second project in my devops development career I have been asked to create a service-oriented architecture (SOA) for an application, made of 4 services that work together.
 My application is called "Looking into the Future". This is a 4 services application where:
