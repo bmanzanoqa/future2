@@ -1,62 +1,49 @@
-# MINI BLOCKS EXHIBITION APP
-
+# 'LOOKING INTO THE FUTURE' APP
 
 ## Contents
-* [Summary](#Summary)
-   * [History](#my-approach)
-   * [Project Requirements](#project-requirements)
-* [Project Tracking](#project-tracking)
-* [Databases Structure](#database-structure)
-* [Risk Assessment](#risk-assessment)
-* [CI Pipeline](#ci-pipeline)
-* [Testing](#testing)
-* [Front-End Design](#front-end-design)
+* [Overview of the Project](#overview-of-the-project)
+  * [Design](#design)
+  * [Project Requirements](#project-requirements)
+* [Deployment Stages](#deployment-stages)
+  * [Project Tracking](#project-tracking)
+  * [Pipeline Planning](#pipeline-planning)
+  * [Docker & Docker-Compose](#docker-and-docker-compose)
+  * [Database Layer](#database-layer)
+  * [Jenkins & Automating testing](#jenkins-and-automating-testing)
+  * [Build and Push stages](#build-and-push-stages)
+  * [Swarm and Ansible](#swarm-and-ansible)
+  * [Ansible and NGINX](#ansible-and-nginx)
+  * [Deploy stage](#deploy-stage)
+  * [Rolling update stage](#rolling-update-stage)
 * [Images](#images)
 * [Authors](#authors)
 * [Thank you!](#thank-you)
 
-## Summary
-### History 
-I love building 'stuff' with microblock pieces. My project is based in the idea of having an APP where I can store the items I build and the rooms (called Exhibitions) where they will be displayed.  I wanted to have a login page where user(other than me, ie, my children) could create a new account or login. Once I had login I would be taken to a page where I would have the options of Items and Exhibitions. In any of these options, once I clicked on them, I would be presented with a selection of CRUD(create, Read, Update,Delete) options. This was more difficult than anticipated so I went for a simpler version.   
-This here is how all started.... [First Idea](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Starting%20point.png) and [Project Structure](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Project%20Structure.png).  
-One day.... it will look like that, till then....
-<details>
-<summary>"Click me!"</summary>
-  
-![Login](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/CRUD1.png)
-  
-![Items CR](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/CRUD2.png)
-  
-![Items UD](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/CRUD3.png)
-  
-![Exhibitions CR](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/CRUD4.png)
-  
-![Exhibitions UD](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/CRUD5.png) 
-  
-</details>
-
-## So.... the simpler version:
-
-The app offers you the option to create, Read, Update and Delete (CRUD) items and Exhibitions (Items are the things I built and Exhibitions the rooms where they will be display).  
-The app is run on a database where the tables have a one to many relationships.
+## Overview of the Project
+For my second project in my devops development career I have been asked to create a service-oriented architecture (SOA) for an application, made of 4 services that work together.
+My application is called "Looking into the Future". This is a 4 services application where:
+  * Service 1 provides us with a webbrowser(front-end).
+  * When refreshing the webpage, service1 will send the requests to the other 3 services. 
+  * Service 2, 3, and 4 just store some random information.
+The idea behind this application is service 1 will send a GET request to services 2 & 3. Service 2 will generate a random date and service 3 will generate a random number, which both will send back to service 1 when service 1 sends them the GET request. These 2 pieces of information will then be sent to service 4 with the post request order to generate some kind of 'future'. Service 4 then will send all this info to Service 1 which then will show the information in the browser to the user.   
+Once Service 1 has gathered all info from Services 2,3 and 4 it will then open a db session just to store the data requested.  
+To prove there is a DB running in the background the app will be able to get the last 5 requests on the screen
 
 ### Project Requirements
 The objective of this project is to create a CRUD application with utilisation of supporting tools, such as:
-- Jira board to cover the project management side of it
-- A relational databases with at least 2 tables, showing the relationship between them
-- A README.md document explaining the basis and architecture of this project
-- Risk Assessment
-- A functional CRUD application created in Python that will meet the requirements of the Jira Board
-- Python Testing
-- A functioning front-end website and integrated API's, using Flask.
-- Code fully integrated into a Version Control System using the
-Feature-Branch model which will subsequently be built through a CI
-server and deployed to a cloud-based virtual machine.
+- Jira board to cover the project management side of it showing the tasks needed to complete the project.
+- Risk Assessment recording any issues or risks I faced creating the app.
+- The application needs to be fully integrated using the Feature-Branch model into a Version Control System which will subsequently be built through a CI server and deployed to a cloud-based virtual machine.
+- If a change is made to a code base, then Webhooks should be used so that Jenkins recreates and redeploys the changed application
+- To deploy the app use containerisation and an orchestration tool.  
+- Create an Ansible Playbook that will provision the environment that my application needs to run. 
+- Create and use a reverse proxy to make your application accessible to the user.
+
 
 ## Project Tracking
-As project Management Software I have used Jira. The link to this board can be found in here [Jira Board](https://trizmanz.atlassian.net/secure/admin/EditDefaultDashboard!default.jspa)
+As project Management Software I have used Jira. The link to this board can be found in here [Jira Board](https://https://trizmanz.atlassian.net/jira/software/projects/F2/boards/4/roadmap)
 
-![Jira Board Backlog](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Jira%20Board%20Backlogs%2023.05.21.PNG)
+![Jira Board Sprint](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Jira%20Board%20Backlogs%2023.05.21.PNG)
 
 ![Jira Board All Sprints](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Jira%20Board%20All%20Sprints.PNG)
 
