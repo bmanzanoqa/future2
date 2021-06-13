@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 services:
   service1:
     build: ./service1
@@ -15,20 +15,20 @@ services:
   service2:
     build: ./service2
     image: trizmanz/service2:latest 
-    container_name: number_api 
-    deploy:
+    container_name: service2  
+    deploy:  
       replicas: 4
 
   service3:
     build: ./service3
     image: trizmanz/service3:latest 
-    container_name: day_api  
+    container_name: service3  
     deploy:
       replicas: 4  
       
   service4:
     build: ./service4
     image: trizmanz/service4:latest 
-    container_name: fortune_api 
+    container_name: service4 
     deploy:
       replicas: 4
