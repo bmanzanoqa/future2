@@ -59,8 +59,7 @@ This project is a very simple application that has just one database with one ta
 
 ![JDatabase Structure](xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
 
-This database is running in the background in a virtual machine in GCP.
-
+This database is running in the background in a MySql virtual machine in GCP.
 
 
 ## Risk Assessment
@@ -70,6 +69,7 @@ Below is a screenshot of the Risk Assessment I have carried out for this project
 
 ![Risk Assessment](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/RA%20latest.PNG)
 
+## Test Plans
 
 ## CI Pipeline
 Continuous integration (CI) allows developers to frequently merge code changes into a central repository where others can contribute.    
