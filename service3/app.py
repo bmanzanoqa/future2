@@ -9,9 +9,8 @@ app = Flask(__name__)
 
 @app.route('/get_day',methods=['GET'])
 def get_day():
-    start_date = datetime.date(2021, 6, 1)
-    end_date = datetime.date(2021, 6, 30)
-
+    start_date = datetime.date(2021, 11, 1)
+    end_date = datetime.date(2021, 11, 30)
 
     time_between_dates = end_date - start_date
     days_between_dates = time_between_dates.days
