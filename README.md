@@ -100,7 +100,7 @@ The way to tackle the development is:
 3. Off the *'dev'* branch I have made another branch *'feature_Docker'* where I have been doing all the work
 4. When each feature has been working I made a pull request and merge into the *'dev'* branch and this has triggered the pipeline. 
 5. Once I have all the features working and I have merge them in *'dev'* and I have a fully working application then I have merged from *'dev'* into *'main'* to show my version 1 of my application.   
-![GitHub Branch Model](https://github.com/bmanzanoqa/F2SupportingDocs/blob/dev/GitHub/)     
+![GitHub Branch Model](https://github.com/bmanzanoqa/F2SupportingDocs/blob/dev/GitHub/GitHub%20Branch%20Model.PNG)  
 
 # Deployment
 This is my CI Pipeline for this app.
