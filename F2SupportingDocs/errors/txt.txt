@@ -13,7 +13,7 @@
   * [Database](#database)
   * [GitHub](#github) 
 * [Deployment](#deployment)
-  * [Stage1: Planning the pipeline](#pipeline)
+  * [Stage1: Planning the pipeline](#planning-the-pipeline)
   * [Stage2: Docker and Docker-Compose](#docker-and-docker-compose)
   * [Stage3: Database Layer](#database-layer)
   * [Stage4: Jenkins & Automating testing](#jenkins-and-automating-testing)
@@ -35,7 +35,7 @@ Once Service 1 has gathered all info from Services 2, 3 and 4 it will then open 
 To prove there is a DB running in the background the app will be able to get the last 5 requests on the screen.
 
 ## Project Requirements
-The objective of this project is to create an application with utilisation of supporting tools, such as:
+The objective of this project is to create a CRUD application with utilisation of supporting tools, such as:
 - Jira board to cover the project management side of it showing the tasks needed to complete the project.
 - Risk Assessment recording any issues or risks I faced creating the app.
 - The application needs to be fully integrated using the Feature-Branch model into a Version Control System which will subsequently be built through a CI server and deployed to a cloud-based virtual machine.
@@ -101,7 +101,8 @@ The way to tackle the development is:
 # Deployment
 This is my CI Pipeline for this app.
 
-![CI Pipeline](xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)  
+![CI Pipeline](https://github.com/bmanzanoqa/F2SupportingDocs/blob/main/CI%20Pipeline%20Miro.PNG)   
+ 
 
 ## Stage1: Planning the pipeline
 The basic functionality of the application is that, when I refresh the page, I am going to get a date, a number and what will happen in that day and this is going to be shown in a web browser.
@@ -194,3 +195,14 @@ Beatriz Manzano finished this project on the 14/06/2021
 ## Thank you!
 I would like to give an special mention to @Harry Volker without whom I may not have been able to complete this project!!
 Thank you to my trainers and everyone in my class for all the patience they have had and the help they have always provided.
+
+
+
+# GCP
+I have been using GCP as a cloud provider for this projects. I have created a Virtual Machine Ubuntu 18.04LTS and a MySql Database to house the data needed.
+In many occasions I have different issues with conecting to both machines and this will be something I will try to resolve in the near future. Should you want to see at some of those issues just "click me!!"
+<details>
+<summary>"Click me!!"</summary>
+![Logging connection app through GCP](https://github.com/bmanzanoqa/MICEXFinal/blob/main/Supporting%20Files/Logging%20connecting%20app%20through%20GCP.PNG)      
+
+
