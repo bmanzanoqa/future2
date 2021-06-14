@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/get_number',methods=['GET'])
 def get_number():
-    result = {'number':random.randint(0, 50)}
+    result = {'number':random.randint(0, 10)}
     return jsonify(result)
 
 if __name__ == "__main__": app.run(host="0.0.0.0", port=5000, debug=True)

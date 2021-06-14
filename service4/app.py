@@ -12,9 +12,9 @@ def get_fortune(day, number):
     if number == 0:
         return f"On {day} YOU WILL LOOSE YOUR HOUSE AND FIANCE, IT'S A TOUGH LIFE!"
     elif number <= 3 :
-        return f"On {day}  you will win £50 from the lottery, now now no complaining, every little helps!"
+        return f"On {day}  YOU WILL WIN £50 FROM THE LOTTERY, NOW NOW NO COMPLAINING, EVERY LITTLE HELPS!"
     elif number <= 6:
-        return f"On {day} you will be invited to countless parties, get a new dress!"
+        return f"On {day}YOU WILL BE INVITED YO COUNTLESS PARTIES!!!"
     elif number <= 9:
             return f"On {day} you will become a millionaire, yeah, right!!!"
     else :
